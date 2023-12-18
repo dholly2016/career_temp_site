@@ -17,15 +17,24 @@
     </head>
   </head>
   <body>
+    {% include 'nav.html'%}
   <div class=".container">
-    <h1 class="text-center mt-2 mb-4"=> {{company_name}} Careers </h1>
-    <img class="img-fluid" id="banner"src="static/career.jpg">
-    
-    <h2 class="text-center mt-2 mb-4">About Dwight Careers website </h2>
+   <img class="img-fluid" id="banner"src="static/career.jpg">
+    <h1 class="text-center mt-2 mb-4"=> {{company_name}} Careers 
+    </h1>
+
+    <div class= "row" style="margin-bottom:16px;">
+      <div class="col-md-6"
     <p class="lead">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lobortis feugiat vivamus at augue eget arcu dictum. Tellus rutrum tellus pellentesque eu tincidunt tortor aliquam nulla. Feugiat sed lectus vestibulum mattis. Lorem ipsum dolor sit amet consectetur. Praesent elementum facilisis leo vel fringilla. Neque egestas congue quisque egestas diam. Habitasse platea dictumst quisque sagittis purus sit amet volutpat consequat. Nisi vitae suscipit tellus mauris a diam maecenas. Molestie ac feugiat sed lectus. Ornare suspendisse sed nisi lacus sed viverra tellus in hac. Diam vulputate ut pharetra sit amet aliquam id. Quis hendrerit dolor magna eget est. A lacus vestibulum sed arcu non. Bibendum ut tristique et egestas quis. Enim ut tellus elementum sagittis vitae et leo duis ut. Dictum varius duis at consectetur lorem donec massa. Nunc consequat interdum varius sit amet mattis vulputate. Urna et pharetra pharetra massa massa ultricies.
 
-   varius duis at consectetur. In nulla posuere sollicitudin aliquam ultrices sagittis orci. Odio morbi quis commodo odio.</p>
+   varius duis at consectetur. In nulla posuere sollicitudin aliquam ultrices sagittis orci. Odio morbi quis commodo odio.
+    </p>
+      </div>
+      <div class="d-none d-md-block col-md-6">
+      <img src="/static/suit.jpg"style="height:320px; border-radius:4px;">
+      </div>
+    </div>
   <h2 class="text-center mt-2 mb-4"> Open Positions </h2>
     <p> 
       {%for job in jobs %}
@@ -34,8 +43,8 @@
     </p>
     <div class="text-center">
     <button class= "btn btn-primary btn-lg"> Contact Us</button>
-      <p class="mt-4">Copyright 2023, Dwight</p>
     </div>
   </div>
+    {% include 'footer.html' %}
   </body>  
 </html>
