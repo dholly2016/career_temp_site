@@ -1,39 +1,27 @@
 from flask import Flask, render_template, jsonify
+from database import engine 
+from sqlalchemy import text 
 
 app = Flask(__name__)
 
-JOBS = [
-{
-  'id':1,
-  'title':'Financial Analyst',
-  'location':'New Haven, CT',
-   'salary': '$ 95,000', 
-},
-{
-  'id':2 ,
-  'title':'Data Analyst',
-  'location':'Hamden, CT',
-   'salary': '$ 85,000', 
-},
-{
-  'id':3 ,
-  'title':'Contract Analyst',
-  'location':'Bridgeport, CT',
-   'salary': '$ 80,000', 
-},
-{
-  'id':4 ,
-  'title':'Sales Analyst',
-  'location':'Stamford, CT',
-   'salary': '88,000', 
-}
 
-]
+def load_jobs_from_db():
+  with engine.connect() as conn:
+    result = conn.execute(text('Select * from jobs;'))
+    jobs = []
+    for row in result.all():
+        jobs.append(dict(row.items()))
+    return jobs
+
+
+
+
 
 @app.route("/")
 def hello_world():
+    jobs  = load_jobs_from_db()
     return render_template('home.html', 
-                          jobs = JOBS,
+                          jobs = jobs,
                           company_name="Dwight")
 
 @app.route("/api/jobs")
